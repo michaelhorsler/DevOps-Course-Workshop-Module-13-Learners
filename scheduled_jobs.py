@@ -2,7 +2,7 @@ from data.database import save_order, get_all_orders
 from products import create_product_download
 from apscheduler.schedulers.background import BackgroundScheduler
 import requests
-
+import json
 
 def initialise_scheduled_jobs(app):
     scheduler = BackgroundScheduler()
@@ -29,7 +29,7 @@ def process_orders(app):
             "date": order.date_placed.isoformat(),
         }
 
-        app.logger.info("Payload sent: " + payload)
+        app.logger.info("Payload sent: " + json.dumps(payload, indent=4))
      
         response = requests.post(
             app.config["FINANCE_PACKAGE_URL"] + "/ProcessPayment",
