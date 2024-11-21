@@ -29,8 +29,11 @@ def process_orders(app):
             "date": order.date_placed_local.isoformat(),
         }
 
-        app.logger.info("Payload sent: " + json.dumps(payload, indent=4))
-     
+        try:
+            app.logger.info("Payload sent: " + json.dumps(payload, indent=4))
+        except:
+            app.logger.exception("Error processing order {id}".format(id = order.id))
+
         response = requests.post(
             app.config["FINANCE_PACKAGE_URL"] + "/ProcessPayment",
             json=payload
