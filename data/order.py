@@ -7,7 +7,7 @@ local_timezone = timezone("Europe/London")
 
 COMPLETE = 'Complete'
 QUEUED = 'Queued'
-FAIL = 'Fail'
+# FAIL = 'Fail'
 
 class Order(db.Model):
     __tablename__ = "orders"
@@ -42,6 +42,6 @@ class Order(db.Model):
         self.date_processed = datetime.now(tz=utc)
         self.status = COMPLETE
 
-    def set_as_fail(self):
-        self.date_processed = datetime.now(tz=utc)
-        self.status = FAIL
+#    def set_as_fail(self):
+#        self.date_processed = datetime.now(tz=utc)
+#        self.status = FAIL
