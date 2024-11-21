@@ -46,8 +46,8 @@ def process_orders(app):
             save_order(order)
         except Exception as err:
             app.logger.exception("Error processing order {id}:".format(id = order.id)+str(err))
-            order.set_as_fail()
-            save_order(order)
+#            order.set_as_fail()
+#            save_order(order)
 
 def get_queue_of_orders_to_process():
     allOrders = get_all_orders()
