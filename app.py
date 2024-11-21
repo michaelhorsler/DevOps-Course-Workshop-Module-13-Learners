@@ -12,7 +12,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 # Configure Azure monitor collection telemetry pipeline
-configure_azure_monitor()
+configure_azure_monitor(enable_live_metrics = True)
 
 
 from flask import Flask, render_template, request
